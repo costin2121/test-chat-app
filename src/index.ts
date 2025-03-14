@@ -10,9 +10,9 @@ const server = createServer(app);
 
 createSocketServer(server);
 
-app.use('/', express.static(path.join(__dirname, '../public')))
+app.use('/', express.static(path.join(__dirname, '../../dist/public')))
 import fs from "fs"
-for (let f of fs.readdirSync(path.join(__dirname, '../public'))) 
+for (let f of fs.readdirSync(path.join(__dirname, '../../dist/public'))) 
 {
 console.log(f)
 }
