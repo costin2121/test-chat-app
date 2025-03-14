@@ -11,7 +11,10 @@ const server = createServer(app);
 createSocketServer(server);
 
 app.use('/', express.static(path.join(__dirname, 'public')))
-// app.get('/', (req,res) => {res.send("HELLO")})
+
+app.get('/', (req,res) => {
+    res.send("Hey! If you see this, it means something has went wrong! Please try again later!")
+})
 
 
 server.listen(PORT, () => {
