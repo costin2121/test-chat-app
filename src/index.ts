@@ -3,7 +3,7 @@ import { createServer } from 'http';
 import createSocketServer from './socket/createSocketServer';
 import path from 'path';
 
-const PORT = process.env.PORT || 3535;
+const PORT = process.env.PORT;
 
 const app = express();
 const server = createServer(app);
