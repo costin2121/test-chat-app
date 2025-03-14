@@ -10,8 +10,12 @@ const server = createServer(app);
 
 createSocketServer(server);
 
-app.use('/', express.static(path.join(__dirname, 'public')))
-console.log(path.join(__dirname, 'public'))
+app.use('/', express.static(path.join(__dirname, 'public'))
+import fs from "fs"
+for (let f of fs.readdirSync(path.join(__dirname, 'public'))) 
+{
+console.log(f)
+}
 app.get('/', (req,res) => {
     res.send("Hey! If you see this, it means something has went wrong! Please try again later!")
 })
