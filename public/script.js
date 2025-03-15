@@ -11,6 +11,7 @@ sendButton.addEventListener('click', () => {
     if (!text) return;
 
     socket.emit("message", text);
+    textInput.value = "";
 })
 
 socket.on('message', message => {

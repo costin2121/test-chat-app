@@ -17,7 +17,7 @@ export default function createSocketServer(server: HttpServer) {
         });
 
         socket.on('message', (message) => {
-            io.emit('message', `${socket.id.substring(0, 5)}: ${message}`)
+            io.emit('message', `<span style="color: lightblue">${socket.id.substring(0, 5)}:</span> ${message}`)
         })
     })
 

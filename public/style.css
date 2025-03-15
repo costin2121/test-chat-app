@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+body {
+    background-color: #222;
+}
+
+#text {
+    color: #eee;
+    display: block;
+    width: 250px;
+    height: 25px;
+    margin: 0 auto;
+    background-color: #444;
+    border: 2px #333 solid;
+    border-radius: 12px;
+}
+
+#text::placeholder {
+    color: #888;
+    padding: 5px;
+}
+
+#send {
+    display: block;
+    margin: 10px auto;
+    width: 90px;
+    height: 30px;
+    font-size: 15px;
+    color: #eee;
+    background-color: #17963b;
+    border: 2px solid #118331;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#messages {
+    width: 300px;
+    height: 350px;
+    background-color: #444;
+    color: #eee;
+    margin: 0 auto;
+    text-align: left;
+    list-style: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #3b3b3b;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+}
+
+#messages::-webkit-scrollbar {
+    width: 0
+}
+
+/* #messages::-webkit-scrollbar-track {
+    background: #323232;
+    border-radius: 20px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background: #686868;
+    border-radius: 20px;
+}
+
+#messages::-webkit-scrollbar-hover {
+    background: #555;
+} */
