@@ -21,12 +21,12 @@ export default function createSocketServer(server: HttpServer) {
         });
 
         socket.on('message', (message) => {
-            io.emit('message', `<span style="color: ${socketIdColors[userId]}">${userId}:</span> ${message}`)
+            io.emit('message', `<span style="color: ${socketIdColors[userId]}">${userId}</span>: ${message}`)
         })
 
-        socket.on('userConnected', (id, color) => {
-            const subbedId = id.substring(0,4);
-            socketIdColors[subbedId]
+        socket.on('userConnected', (user) => {
+            const subbedId = user.id.substring(0,4);
+            socketIdColors[subbedId] = user.color;
             io.emit('userConnected', subbedId);
         })
     })
