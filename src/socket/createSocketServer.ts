@@ -4,7 +4,7 @@ import { Server as HttpServer } from 'http';
 export default function createSocketServer(server: HttpServer) {
     const io = new Server(server, {
         cors: {
-            origin: "*", // Change this to frontend URL in production
+            origin: "https://test-chat-app-ttp8.onrender.com", // Change this to frontend URL in production
             methods: ["GET", "POST"]
         }
     });
