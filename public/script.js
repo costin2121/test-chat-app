@@ -19,3 +19,11 @@ socket.on('message', message => {
 
     messages.appendChild(el);
 })
+
+socket.on('connect', () => {
+    const el = document.createElement('li');
+    el.innerText = `User ${socket.id} Connected!`;
+    el.style.color = "orange";
+
+    messages.appendChild(el);
+})
