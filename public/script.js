@@ -1,5 +1,5 @@
 import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
-const socket = io("http://localhost:10000");
+const socket = io("https://chat.costindev.xyz");
 
 const sendButton = document.querySelector("#send");
 const textInput = document.querySelector("#text");
