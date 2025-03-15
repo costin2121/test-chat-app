@@ -1,27 +1,30 @@
 import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
-const socket = io("https://chat.costindev.xyz");
+const socket = io("http://localhost:3535");
 
 const sendButton = document.querySelector("#send");
 const textInput = document.querySelector("#text");
 const messages = document.querySelector("#messages");
 
-let colors = ["lightblue", "red", "green", "lightgreen", "cyan", "purple", "violet", "indigo"]
+let colors = ["lightblue", "red", "green", "lightgreen", "cyan", "purple", "violet", "indigo"];
 let socketIdColors = {};
+
+function sendMessageEvent(text) {
+    socket.emit("message", text);
+    textInput.value = "";
+    messages.scrollTop = messages.scrollHeight;
+}
 
 sendButton.addEventListener('click', () => {
     const text = textInput.value;
 
     if (!text) return;
-
-    socket.emit("message", text);
-    textInput.value = "";
+    sendMessageEvent(text);
 })
 
 document.addEventListener('keyup', (e) => {
     const text = textInput.value;
     if (e.key === "Enter") {
-        socket.emit("message", text);
-        textInput.value = "";
+        sendMessageEvent(text);
     }
 })
 
@@ -42,9 +45,12 @@ socket.on('connect', () => {
 
 })
 
+function coloredText(text, color) {
+    return `<span style="color: ${color}">${text}</span>`
+}
+
 socket.on('userConnected', (id) => {
     const el = document.createElement('li');
-    el.innerHTML = `User <span style="color: ${socketIdColors[id]}">${id}</span> connected!`;
-    el.style.color = "orange";
+    el.innerHTML = `${coloredText("User", "orange")} ${coloredText(id, socketIdColors[id])} ${coloredText("connected!", "orange")}`;
     messages.appendChild(el);
 })
