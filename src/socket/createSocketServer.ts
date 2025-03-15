@@ -11,6 +11,7 @@ export default function createSocketServer(server: HttpServer) {
 
 
     io.on('connection', (socket) => {
+        let socketIdColors: { [key: string]: string } = {};
         const userId = socket.id.substring(0, 4);
 
         console.log(`New connection made! Socket ID: ${userId}`)
@@ -20,11 +21,13 @@ export default function createSocketServer(server: HttpServer) {
         });
 
         socket.on('message', (message) => {
-            io.emit('message', `<span style="color: lightblue">${userId}:</span> ${message}`)
+            io.emit('message', `<span style="color: ${socketIdColors[userId]}">${userId}:</span> ${message}`)
         })
-        
-        socket.on('userConnected', (id) => {
-            io.emit('userConnected', id.substring(0, 4))
+
+        socket.on('userConnected', (id, color) => {
+            const subbedId = id.substring(0,4);
+            socketIdColors[subbedId]
+            io.emit('userConnected', subbedId);
         })
     })
 
