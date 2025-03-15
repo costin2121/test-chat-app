@@ -1,5 +1,7 @@
 import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
-const socket = io("https://test-chat-app-ttp8.onrender.com");
+const socket = io("https://test-chat-app-ttp8.onrender.com", {
+    transports: ["websocket", "polling"]
+});
 
 const sendButton = document.querySelector("#send");
 const textInput = document.querySelector("#text");
@@ -19,8 +21,3 @@ socket.on('message', message => {
 
     messages.appendChild(el);
 })
-
-// socket.on("connect", () => {
-//     console.log("Connected to server! Socket ID:", socket.id);
-// });
-
