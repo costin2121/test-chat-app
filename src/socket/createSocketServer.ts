@@ -22,6 +22,10 @@ export default function createSocketServer(server: HttpServer) {
         socket.on('message', (message) => {
             io.emit('message', `<span style="color: lightblue">${userId}:</span> ${message}`)
         })
+        
+        socket.on('userConnected', (id) => {
+            io.emit('userConnected', id.substring(0, 4))
+        })
     })
 
     console.log("WebSocket server initialized!");

@@ -15,6 +15,7 @@ sendButton.addEventListener('click', () => {
 })
 
 document.addEventListener('keyup', (e) => {
+    const text = textInput.value;
     if (e.key === "Enter") {
         socket.emit("message", text);
         textInput.value = "";
@@ -23,15 +24,19 @@ document.addEventListener('keyup', (e) => {
 
 socket.on('message', message => {
     const el = document.createElement('li');
-    el.innerText = message;
+    el.innerHTML = message;
 
     messages.appendChild(el);
 })
 
 socket.on('connect', () => {
-    const el = document.createElement('li');
-    el.innerHTML = `User ${socket.id.substring(0, 4)} Connected!`;
-    el.style.color = "orange";
+    socket.emit("userConnected", socket.id)
 
+})
+
+socket.on('userConnected', (id) => {
+    const el = document.createElement('li');
+    el.innerHTML = `User ${id} connected!`;
+    el.style.color = "orange";
     messages.appendChild(el);
 })
