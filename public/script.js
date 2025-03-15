@@ -14,6 +14,13 @@ sendButton.addEventListener('click', () => {
     textInput.value = "";
 })
 
+document.addEventListener('keyup', (e) => {
+    if (e.key === "Enter") {
+        socket.emit("message", text);
+        textInput.value = "";
+    }
+})
+
 socket.on('message', message => {
     const el = document.createElement('li');
     el.innerText = message;
@@ -23,7 +30,7 @@ socket.on('message', message => {
 
 socket.on('connect', () => {
     const el = document.createElement('li');
-    el.innerText = `User ${socket.id} Connected!`;
+    el.innerHTML = `User ${socket.id.substring(0, 4)} Connected!`;
     el.style.color = "orange";
 
     messages.appendChild(el);

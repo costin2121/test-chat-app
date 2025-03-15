@@ -8,16 +8,19 @@ export default function createSocketServer(server: HttpServer) {
             methods: ["GET", "POST"]
         }
     });
-    
+
+
     io.on('connection', (socket) => {
-        console.log(`New connection made! Socket ID: ${socket.id.substring(0, 5)}`)
+        const userId = socket.id.substring(0, 4);
+
+        console.log(`New connection made! Socket ID: ${userId}`)
 
         socket.on('disconnect', () => {
-            console.log(`Socket ${socket.id.substring(0, 5)} disconnected`);
+            console.log(`Socket ${userId} disconnected`);
         });
 
         socket.on('message', (message) => {
-            io.emit('message', `<span style="color: lightblue">${socket.id.substring(0, 5)}:</span> ${message}`)
+            io.emit('message', `<span style="color: lightblue">${userId}:</span> ${message}`)
         })
     })
 
