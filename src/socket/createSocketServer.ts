@@ -10,7 +10,6 @@ export default function createSocketServer(server: HttpServer) {
     });
     
     io.on('connection', (socket) => {
-        console.log(socket.handshake.address);
         console.log(`New connection made! Socket ID: ${socket.id.substring(0, 5)}`)
 
         socket.on('disconnect', () => {

@@ -19,8 +19,3 @@ socket.on('message', message => {
 
     messages.appendChild(el);
 })
-
-// socket.on("connect", () => {
-//     console.log("Connected to server! Socket ID:", socket.id);
-// });
-
