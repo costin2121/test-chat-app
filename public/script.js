@@ -5,7 +5,7 @@ const sendButton = document.querySelector("#send");
 const textInput = document.querySelector("#text");
 const messages = document.querySelector("#messages");
 
-let colors = ["lightblue", "red", "green", "lightgreen", "cyan", "magenta"]
+let colors = ["lightblue", "red", "green", "lightgreen", "cyan", "purple", "violet", "indigo"]
 let socketIdColors = {};
 
 sendButton.addEventListener('click', () => {
@@ -44,7 +44,7 @@ socket.on('connect', () => {
 
 socket.on('userConnected', (id) => {
     const el = document.createElement('li');
-    el.innerHTML = `User <span style="color: ${socketIdColors[id]}>${id}</span> connected!`;
+    el.innerHTML = `User <span style="color: ${socketIdColors[id]}">${id}</span> connected!`;
     el.style.color = "orange";
     messages.appendChild(el);
 })
