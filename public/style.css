@@ -13,16 +13,21 @@ body {
     color: #eee;
     display: block;
     width: 250px;
-    height: 25px;
+    height: 30px;
     margin: 0 auto;
     background-color: #444;
     border: 2px #333 solid;
     border-radius: 12px;
+    padding: 0 10px;
+
 }
 
 #text::placeholder {
     color: #888;
-    padding: 5px;
+}
+
+#text:focus {
+    outline: none;
 }
 
 #send {
